@@ -1,0 +1,13 @@
+[Unit]
+Description=Pi 4 USB keyboard gadget
+After=systemd-modules-load.service
+RequiresMountsFor=/sys/kernel/config
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/python3 /opt/pi4-switch-input/gadget.py start
+ExecStop=/usr/bin/python3 /opt/pi4-switch-input/gadget.py stop
+
+[Install]
+WantedBy=multi-user.target
