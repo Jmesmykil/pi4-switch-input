@@ -22,3 +22,20 @@ The available input source snapshot had no standalone license notice. This
 extracted package is released under the [MIT License](LICENSE), selected by the
 author for reuse and modification. Public protocol documentation is linked for
 reference, not bundled.
+
+
+## Bluetooth guide (2026-10-27)
+
+`docs/controllers.md` now documents an independently exercised integration with
+DialingSpoon527/seedsow-lua-editor at commit
+`138c752856bebdfcd92ac07fa5e6dd67f99a5f50`. Its installer, bridge, pairing agent,
+NXBT patcher and packet protocol were compared byte-for-byte with that commit
+before documenting the tested setup. The installer pins Brikwerk/nxbt commit
+`ec4b800ad6c55de96bb6c7f9f84b5bdc59a4c975` and applies its documented compatibility
+fixes. Those projects' runtime source is linked, not copied into this repository;
+their own licenses and third-party notices apply.
+
+Hardware observations cover Player 1 pairing, controller navigation, calibration,
+a checksummed 228-byte raw Lua upload and its visible Lua 5.1 output. They do not
+establish USB controller support or automatic reconnect across restarts. The
+original extracted USB package's separate hardware-testing limitation remains.

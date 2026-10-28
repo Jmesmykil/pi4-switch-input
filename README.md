@@ -1,4 +1,4 @@
-# Pi 4 → Switch keyboard input
+# Pi 4 → Switch input
 
 The keyboard method from my Raspberry Pi 4 setup, packaged separately so it can
 be read and implemented elsewhere. The Pi presents a standard USB boot keyboard;
@@ -8,13 +8,21 @@ Python sends 8-byte press/release reports to `/dev/hidg0`.
 Computer ── SSH over Ethernet/Wi-Fi ── Pi 4 USB-C ── USB data cable/hub ── Switch 2
 ```
 
-**Keyboard code is included. Switch Pro Controller emulation is planned and is
-not implemented here.** See [controller implementation notes](docs/controllers.md).
+Two input paths are available:
+
+- **USB keyboard:** the code and setup below are included in this repository.
+- **Bluetooth Pro Controller:** a [tested setup guide](docs/controllers.md) uses the
+  external Seedsow Lua Editor bridge and pinned NXBT source. It covers pairing as
+  Player 1, navigation, calibration and Lua uploads. Controller runtime code remains
+  in those upstream projects; this repository does not bundle it.
+
 The capture card supplies a view of the console; it does not carry these inputs.
 
 This is a cleaned extraction of the original input method. Host tests cover
-report generation and ownership checks. This exact package has not been tested
-on a physical Switch 2. A successful HID write means the host accepted a report;
+report generation and ownership checks. The extracted USB keyboard package has not been tested
+on a physical Switch 2. The separate Bluetooth route was verified on Switch 2 on
+2026-10-27; its [evidence and limits](docs/controllers.md#verified-hardware-result)
+are recorded separately. A successful HID write means the host accepted a report;
 check the actual text on screen before sending more.
 
 ## What you need
